@@ -1,0 +1,549 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+$black: #000000;
+$white: #ffffff;
+$background-color: #F1F3F2;
+$accent: #38CEA8;
+$light-accent: #EAFEEC;
+$ligther-accent: #F1FFF8;
+$medium-accent: #E7F9F5;
+$light-grey: #F0E9E9;
+$grey: #888282;
+$stroke: #B1BBEE;
+$txt-main: #376474;
+$head-txt: #212D32;
+$light-text: #20414D;
+$icons: #32505B;
+$red: #F62A2A;
+
+@mixin flex($flex-flow, $align, $justify, $gap){
+    display: flex;
+    flex-flow: $flex-flow;
+    align-items: $align;
+    justify-content: $justify;
+    gap: $gap;
+}
+@mixin Roboto($size, $weight, $height, $letter){
+    font-family: Roboto;
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $height;
+    letter-spacing: $letter;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+}
+//FONTS
+h1{
+    @include Roboto(48px, 400, 56px, 0em);
+    color: $head-txt;
+}
+h2{
+    @include Roboto(24px, 400, 32px, 0em);
+}
+p{
+    @include Roboto(16px, 400, 24px, 0em);
+}
+//LOGO
+.logo{
+    @include flex(row nowrap, center, initial, 2px);
+    svg{
+        circle{
+            fill: $accent;
+        }
+        path{
+            stroke: $accent;
+        }
+    }
+    span{
+        @include Roboto(24px, 400, 32px, 0em);
+        color: $black;
+    }
+}
+//BUTTONS
+.btn-fill{
+    @include Roboto(16px, 400, 24px, 0em);
+    text-align: center;
+    padding: 16px 32px;
+    border-radius: 100px;
+    background-color: $accent;
+    color: $white;
+}
+.btn-outline{
+    @include Roboto(16px, 400, 24px, 0em);
+    text-align: center;
+    padding: 8px 32px;
+    border: $accent solid 2px;
+    border-radius: 100px;
+    color: $accent;
+}
+//HEADER
+.header{
+    @include flex(row wrap, center, space-between, 24px);
+    background-color: $light-accent;
+    padding: 24px 3%;
+    &__menu{
+        background-color: $ligther-accent;
+    }
+}
+.socials{
+    @include flex(row nowrap, center, initial, 24px);
+}
+.social-icon{
+    svg,img{
+        fill: $icons;
+    }
+    :hover{
+        fill: $accent;
+    }
+}
+.menu{
+    @include flex(row wrap, center, space-between, 32px);
+    @include Roboto(16px, 400, 24px, 0em);
+    padding: 0 5%;
+    a, svg{
+        color: $light-text;
+        fill: $light-text;
+    }
+    &__contacts{
+        @include flex(row wrap, center, initial, initial);
+    }
+    &__list{
+        @include flex(row wrap, center, initial, initial);
+    }
+    &__sub-list{
+        @include flex(column nowrap, start, initial, initial);
+        display: none;
+        position: absolute;
+        background-color: $ligther-accent;
+
+    }
+    &__item{
+        padding: 10px;
+        &--select{
+            a{
+                text-decoration: underline;
+            }
+        }
+        :hover{
+            color: $accent;
+            fill: $accent; 
+        }
+    }
+
+    &__item:hover &__sub-list{
+        display: initial;
+    }
+}
+//PROMO
+.promo{
+    background-color: $background-color;
+    @include flex(row wrap, center, space-between, initial);
+    padding: 0 10%;
+    &__call-to-action{
+        @include flex(column nowrap, center, center, initial);
+        max-width: 488px;
+        margin: 70px 0 150px;
+    }
+    &__actions{
+        @include flex(row nowrap, center, center, 18px);
+    }
+    &__btn{
+        &--red{
+            background-color: $red ;
+        }
+    }
+    &__title{
+        color: $icons;
+        font-weight: 500;
+        text-align: center;
+        b{
+            color: $txt-main;
+        }
+        margin-bottom: 16px;
+    }
+    &__description{
+        margin: -8px 0 16px;
+        text-align: center;
+        color: $txt-main;
+    }
+}
+//HOW IT WORKS
+.how-it-works{
+    @include flex(column nowrap, center, center, initial);
+    padding: 80px 3% 40px;
+    &__description{
+        padding: 16px 0 0;
+    }
+    &__steps{
+        @include flex(row wrap, start, space-between, 32px);
+        margin: 45px 0;
+        width: 100%;
+    }
+    h2{
+        color: $txt-main;
+    }
+}
+.step{
+    @include flex(row nowrap, start, center, 20px);
+    max-width: 384px;
+    b{
+        color: $accent;
+    }
+    &__title{
+        @include Roboto(20px, 700, 32px, 0em);
+        color: $txt-main;
+    }
+    &__subtitle{
+        @include Roboto(16px, 400, 24px, 0em);
+        color: $txt-main;
+    }
+    p{
+        margin-top: 16px;
+        color: $txt-main;
+    }
+}
+//RECIPES
+.recipes{
+    @include flex(row wrap, start, space-between, 32px);
+    background-image: url(../img/photos/bg-2.png);
+    background-size: 100%;
+    background-position: center;
+    background-size: cover;
+    padding: 40px 3%;
+}
+.recip{
+    @include flex(column nowrap, center, space-between, initial);
+    background-color: $white;
+    padding: 16px;
+    max-width: 384px;
+    border-radius: 10px;
+    border-bottom: $accent solid 8px;
+    text-align: center;
+    &__title{
+        margin-top: 24px;
+    }
+    h2,p{
+        color: $txt-main;
+        max-width: 320px;
+    }
+    &__description{
+        margin: 16px 0 32px;
+    }
+}
+//STORIES
+.stori{
+    @include flex(row wrap, center, space-between, 32px);
+    padding: 60px 3%;
+    &__title{
+        color: $accent;
+    }
+    &__txt{
+        max-width: 700px;
+    }
+    &__subtitle{
+        margin: 8px 0 24px;
+    }
+    &__subtitle, &__description{
+        color: $head-txt;
+    }
+    img{
+        border: $accent solid 4px;
+        border-radius: 15px;
+    }
+}
+//REVIEWS
+.reviews{
+    padding: 0 3%;
+    &__slider{
+        @include flex(row nowrap, center, space-between, 60px);
+        margin: 26px 0;
+    }
+    svg{
+        fill: $txt-main;
+    }
+    hr{
+        border: none;
+        border-radius: 10px;
+        margin: 0;
+        height: 4px;
+        background-color: $accent;
+        opacity: 35%;
+    }
+    &__box{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(456px, 1fr));
+        gap: 60px;
+        justify-content: space-between;
+        width: 100%;
+    }  
+}
+.review{
+    @include flex(row nowrap, start, initial, 40px);
+    &__txt{
+        color: $head-txt;
+    }
+    &__user{
+        @include Roboto(18px, 500, 24px, 0em);
+        margin: 16px 0 8px;
+        span{
+            color: $accent;
+            font-size: 16px;
+            padding-left: 4px;
+        }
+    }
+}
+//PROGRAM
+.program{
+    @include flex(column nowrap, center, center, initial);
+    padding: 40px 3%;
+    margin: 60px 0;
+    background-color: $medium-accent;
+    &__box{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 32px;
+        justify-content: space-between;
+        width: 100%;
+        justify-items: center
+    }
+    &__description{
+        margin: 16px 0 32px;
+        color: $head-txt;
+        max-width: 760px;
+        text-align: center;
+    }
+    &__title{
+        color: $head-txt;
+        text-align: center;
+    }
+}
+
+.program-item{
+    @include flex(column nowrap, center, center, initial);
+    max-width: 276px;
+    &__title{
+        @include Roboto(22px, 500, 24px, 0em);
+        text-align: center;
+        color: $head-txt;
+        margin: 24px 0 16px;
+    }
+    &__description{
+        color: $head-txt;
+        text-align: center;
+    }
+}
+
+//TABLE
+.table-plan-choice{
+    margin: 90px 3% 100px;
+    width: 94%;
+    border-collapse: collapse; 
+    border-spacing: 0;
+    &__description{
+        color: $txt-main;
+    }
+    &__title{
+        color: $head-txt;
+    }
+    &__price{
+        color: $head-txt;
+        span{
+            @include Roboto(58px, 300, 56px, 0em);
+            color: $head-txt;
+        }
+    }
+    td, th{
+        border: 1px solid $stroke; 
+        padding: 16px 50px;
+        text-align: center;
+        color: $head-txt;
+        vertical-align: middle;
+    }
+    tr td:nth-child(3), tr th:nth-child(3) { 
+        border-left: 3px solid $red ; 
+        border-right: 3px solid $red ;
+    }
+    tr:first-child th:nth-child(3) { 
+        border-top: 3px solid $red ;
+    }
+    tr:last-child td:nth-child(3) { 
+        border-bottom: 3px solid $red ;
+    }
+}
+
+
+
+
+
+
+
+
+//QUESTIONS
+.questions{
+    padding: 0 3% 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(590px, 1fr));
+    gap: 40px;
+    justify-content: space-between;
+}
+.question{
+    @include flex(row nowrap, start, start, 16px);
+    &__title{
+        color: $head-txt;
+    }
+    &__description{
+        color: $light-text;
+    }
+    &__ellipse{
+        background-color: $accent;
+        border-radius: 100px;
+        b{
+            @include flex(initial, center, center, initial);
+            font-size: 40px;
+            color: $white;
+            height: 64px;
+            width: 64px;
+        }
+    }
+}
+
+//FORM
+.bg-3{
+    background-image: url(../img/photos/bg-3.png);
+    background-size: 100%;
+    background-position: center;
+    background-size: cover;
+    padding: 110px 10% 110px;
+}
+.form-box{
+    background-color: $white;
+    padding: 50px;
+    border-radius: 10px;
+    max-width: 400px;
+    &__btn{
+        padding: 8px 32px;
+    }
+    input{
+        background-color: $light-grey;
+        border: $grey 1px solid;
+        width: 95%;
+        height: 40px;
+        border-radius: 100px;
+        padding-left: 16px;
+        margin-top: 30px;
+    }
+    input::placeholder {
+        color: $grey;
+    }
+    &__description,&__hlp-txt{
+        color: $head-txt;
+        @include Roboto(12px, 300, 18px, 0em);
+        b{
+            color: $head-txt;
+        }
+    }
+    &__hlp-txt{
+        color: $head-txt;
+        @include Roboto(9px, 300, 18px, 0em);
+    }
+    &__actions{
+        @include flex(row nowrap, center, start, 20px);
+        margin-top: 16px;
+    }
+    &__title{
+        color: $accent;
+    }
+    &__subtitle{
+        margin-bottom: 30px;
+        color: $light-text;
+    }
+}
+//COACHES
+.coaches{
+    padding: 90px 10%;
+    &__box{
+        margin: 70px 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(490px, 1fr));
+        gap: 40px;
+        justify-content: space-between;
+    }
+    &__title{
+        color: $head-txt;
+        text-align: center;
+        margin-bottom: 16px;
+    }
+    &__subtitle{
+        color: $light-text;
+        text-align: center;
+    }
+
+}
+.coach{
+    @include flex(row nowrap, initial, initial, 20px);
+    &__name{
+        @include flex(row nowrap, start, space-between, 40px);
+        width: 100%;
+    }
+    &__socials{
+        @include flex(row nowrap, start, start, 20px);
+    }
+    &__box{
+        @include flex(column nowrap, start, start, 8px);
+    }
+    &__title{
+        color: $accent;
+        font-size: 18px;
+    }
+    &__description{
+        color: $light-text;
+    }
+}
+//JOURNEY
+.journey{
+    background-color: $accent;
+    padding: 80px 10%;
+    @include flex(row wrap, center, space-between, 20px);
+    b{
+        color: $white;
+    }
+    &__btn{
+        color: $white;
+        border-color: $white;
+    }
+}
+//FOOTER
+.footer{
+    padding: 20px 10%;
+    display: grid;
+    grid-template-columns: minmax(280px, 3fr) repeat(auto-fit, minmax(180px, 1fr));
+    justify-content: space-between;
+    justify-items: stretch;
+    align-items: start;
+    gap: 2%;
+    &__menu{
+        @include flex(column nowrap, start, initial, initial);
+    }
+    &__info{
+        max-width: 280px;
+        p{
+            @include Roboto(12px, 400, 14px, 0em);
+            color: $head-txt;
+        }
+        :nth-child(3){
+            color: $txt-main;
+            margin: 8px 0 16px;
+        }
+        :nth-child(1){
+            margin-bottom: 32px;
+        }
+    }
+    &__title{
+        color: $txt-main;
+    }
+}
+
+
+
+
+
