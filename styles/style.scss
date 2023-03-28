@@ -34,14 +34,14 @@ body{
 }
 //FONTS
 h1{
-    @include Roboto(48px, 400, 56px, 0em);
+    @include Roboto(3rem, 400, 3.5rem, 0em);
     color: $head-txt;
 }
 h2{
-    @include Roboto(24px, 400, 32px, 0em);
+    @include Roboto(1.5rem, 400, 2rem, 0em);
 }
 p{
-    @include Roboto(16px, 400, 24px, 0em);
+    @include Roboto(1rem, 400, 1.5rem, 0em);
 }
 //LOGO
 .logo{
@@ -61,7 +61,7 @@ p{
 }
 //BUTTONS
 .btn-fill{
-    @include Roboto(16px, 400, 24px, 0em);
+    @include Roboto(1rem, 400, 1.5rem, 0em);
     text-align: center;
     padding: 16px 32px;
     border-radius: 100px;
@@ -69,7 +69,7 @@ p{
     color: $white;
 }
 .btn-outline{
-    @include Roboto(16px, 400, 24px, 0em);
+    @include Roboto(1rem, 400, 1.5rem, 0em);
     text-align: center;
     padding: 8px 32px;
     border: $accent solid 2px;
@@ -105,13 +105,13 @@ p{
         fill: $light-text;
     }
     &__contacts{
-        @include flex(row wrap, end, end, initial);
+        @include flex(row wrap, flex-end, flex-end, initial);
     }
     &__list{
         @include flex(row nowrap, center, initial, initial);
     }
     &__sub-list{
-        @include flex(column nowrap, start, initial, initial);
+        @include flex(column nowrap, flex-start, initial, initial);
         display: none;
         position: absolute;
         background-color: $ligther-accent;
@@ -258,7 +258,7 @@ p{
         color: $txt-main;
     }
     &__steps{
-        @include flex(row wrap, start, space-between, 32px);
+        @include flex(row wrap, flex-start, space-between, 32px);
         margin: 45px 0;
         width: 100%;
     }
@@ -267,17 +267,17 @@ p{
     }
 }
 .step{
-    @include flex(row nowrap, start, center, 20px);
+    @include flex(row nowrap, flex-start, center, 20px);
     max-width: 384px;
     b{
         color: $accent;
     }
     &__title{
-        @include Roboto(20px, 700, 32px, 0em);
+        @include Roboto(1.25rem, 700, 2rem, 0em);
         color: $txt-main;
     }
     &__subtitle{
-        @include Roboto(16px, 400, 24px, 0em);
+        @include Roboto(1rem, 400, 1.5rem, 0em);
         color: $txt-main;
     }
     p{
@@ -287,13 +287,13 @@ p{
 }
 @media (max-width: 1030px){
     .step{
-        @include flex(row nowrap, start, center, 20px);
+        @include flex(row nowrap, flex-start, center, 20px);
         max-width: 100%;
     }
 }
 //RECIPES
 .recipes{
-    @include flex(row wrap, start, space-between, 32px);
+    @include flex(row wrap, flex-start, space-between, 32px);
     background-image: url(../img/photos/bg-2.png);
     background-size: 100%;
     background-position: center;
@@ -387,16 +387,16 @@ p{
     }
 }
 .review{
-    @include flex(row nowrap, start, initial, 40px);
+    @include flex(row nowrap, flex-start, initial, 40px);
     &__txt{
         color: $head-txt;
     }
     &__user{
-        @include Roboto(18px, 500, 24px, 0em);
+        @include Roboto(1.125rem, 500, 1.5rem, 0em);
         margin: 16px 0 8px;
         span{
             color: $accent;
-            font-size: 16px;
+            font-size: 1rem;
             padding-left: 4px;
         }
     }
@@ -416,7 +416,7 @@ p{
         }
     }
     .review{
-        @include flex(row wrap, start, initial, 20px);
+        @include flex(row wrap, flex-start, initial, 20px);
     }
 }
 //PROGRAM
@@ -448,7 +448,7 @@ p{
     @include flex(column nowrap, center, center, initial);
     max-width: 276px;
     &__title{
-        @include Roboto(22px, 500, 24px, 0em);
+        @include Roboto(1.375rem, 500, 1.5rem, 0em);
         text-align: center;
         color: $head-txt;
         margin: 24px 0 16px;
@@ -545,7 +545,7 @@ p{
     justify-content: space-between;
 }
 .question{
-    @include flex(row nowrap, start, start, 16px);
+    @include flex(row nowrap, flex-start, flex-start, 16px);
     &__title{
         color: $head-txt;
     }
@@ -598,19 +598,19 @@ p{
     input::placeholder {
         color: $grey;
     }
-    &__description,&__hlp-txt{
+    &__description, &__hlp-txt{
         color: $head-txt;
-        @include Roboto(12px, 300, 18px, 0em);
+        @include Roboto(0.75rem, 300, 1.125rem, 0em);
         b{
             color: $head-txt;
         }
     }
     &__hlp-txt{
         color: $head-txt;
-        @include Roboto(9px, 300, 18px, 0em);
+        @include Roboto(0.5625rem, 300, 1.125rem, 0em);
     }
     &__actions{
-        @include flex(row nowrap, center, start, 20px);
+        @include flex(row nowrap, center, flex-start, 20px);
         margin-top: 16px;
     }
     &__title{
@@ -628,7 +628,7 @@ p{
             padding: 8px 32px;
         }
         &__actions{
-            @include flex(row wrap, center, start, 10px);
+            @include flex(row wrap, center, flex-start, 10px);
             margin-top: 16px;
         }
     }
@@ -656,28 +656,32 @@ p{
 .coach{
     @include flex(row nowrap, initial, initial, 20px);
     &__name{
-        @include flex(row nowrap, start, space-between, 40px);
+        @include flex(row nowrap, flex-start, space-between, 40px);
         width: 100%;
     }
     &__socials{
-        @include flex(row nowrap, start, start, 20px);
+        @include flex(row nowrap, flex-start, flex-start, 20px);
     }
     &__box{
-        @include flex(column nowrap, start, start, 8px);
+        @include flex(column nowrap, flex-start, flex-start, 8px);
     }
     &__title{
         color: $accent;
-        font-size: 18px;
+        font-size: 1.125rem;
     }
     &__description{
         color: $light-text;
+    }
+    &__img{
+        max-width: 136px;
+        max-height: 136px;
     }
 }
 @media (max-width: 1030px){
     .coach{
         @include flex(row wrap, initial, initial, 20px);
         &__name{
-            @include flex(row wrap, start, space-between, 20px);
+            @include flex(row wrap, flex-start, space-between, 20px);
             width: 100%;
         }
     }
@@ -711,12 +715,12 @@ p{
     align-items: start;
     gap: 2%;
     &__menu{
-        @include flex(column nowrap, start, initial, initial);
+        @include flex(column nowrap, flex-start, initial, initial);
     }
     &__info{
         max-width: 280px;
         p{
-            @include Roboto(12px, 400, 14px, 0em);
+            @include Roboto(0.75rem, 400, 0.875rem, 0em);
             color: $head-txt;
         }
         :nth-child(3){
