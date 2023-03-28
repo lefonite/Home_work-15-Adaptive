@@ -97,7 +97,7 @@ p{
     }
 }
 .menu{
-    @include flex(row wrap, center, space-between, 32px);
+    @include flex(row nowrap, center, space-between, 2%);
     @include Roboto(16px, 400, 24px, 0em);
     padding: 0 5%;
     a, svg{
@@ -105,10 +105,10 @@ p{
         fill: $light-text;
     }
     &__contacts{
-        @include flex(row wrap, center, initial, initial);
+        @include flex(row wrap, end, end, initial);
     }
     &__list{
-        @include flex(row wrap, center, initial, initial);
+        @include flex(row nowrap, center, initial, initial);
     }
     &__sub-list{
         @include flex(column nowrap, start, initial, initial);
@@ -129,14 +129,82 @@ p{
             fill: $accent; 
         }
     }
-
-    &__item:hover &__sub-list{
+    &__item:hover  &__sub-list{
         display: initial;
+    }
+}
+//HAMBURGER
+#checkbox_toggle{
+    display: none;
+}
+.hamburger{
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+.hamburger-line{
+    background-color: $head-txt;
+    display: block;
+    height: 2px;
+    width: 24px;
+    position: relative;
+}
+.hamburger-line::before,
+.hamburger-line::after {
+    background-color: $head-txt;
+    content: '';
+    display: block;
+    position: absolute;
+    transition: all .3s;
+    width: 100%;
+    height: 100%;
+}
+.hamburger-line::before{
+    top: 7px;
+}
+.hamburger-line::after{
+    top: -7px;
+}
+@media (max-width: 1030px){
+    .menu-list{
+        // display: none;
+        max-height: 0;
+        overflow: hidden;
+        position: absolute;
+        background-color: $ligther-accent;
+        text-align: center;
+        top: 104px;
+        right: 0;
+        left: 0;
+        margin-top: 20px;
+    }
+    .hamburger{
+        display: block;
+        padding: 20px 0;
+    }
+    #checkbox_toggle:checked ~ .menu-list{
+        display: block;
+        max-height: 100%;
+        transition: all .5s;
+    }
+    #checkbox_toggle:checked ~ .hamburger .hamburger-line{
+        background-color: transparent;
+    }
+    #checkbox_toggle:checked ~ .hamburger .hamburger-line::before{
+        transform: rotate(-45deg);
+        top: 0;
+    }
+    #checkbox_toggle:checked ~ .hamburger .hamburger-line::after{
+        transform: rotate(45deg);
+        top: 0;
     }
 }
 //PROMO
 .promo{
     background-color: $background-color;
+    &__img{
+        max-width: 100%;
+    }
     @include flex(row wrap, center, space-between, initial);
     padding: 0 10%;
     &__call-to-action{
@@ -145,7 +213,7 @@ p{
         margin: 70px 0 150px;
     }
     &__actions{
-        @include flex(row nowrap, center, center, 18px);
+        @include flex(row wrap, center, center, 18px);
     }
     &__btn{
         &--red{
@@ -167,20 +235,35 @@ p{
         color: $txt-main;
     }
 }
+@media (max-width: 1030px){
+    .promo{
+        padding: 0 5%;
+        @include flex(row wrap, center, center, initial);
+        &__btn{
+            width: 100%;
+        }
+        &__call-to-action{
+            max-width: 100%;
+            margin: 70px 0 70px;
+        }
+    }
+}
 //HOW IT WORKS
 .how-it-works{
     @include flex(column nowrap, center, center, initial);
     padding: 80px 3% 40px;
     &__description{
         padding: 16px 0 0;
+        text-align: center;
+        color: $txt-main;
     }
     &__steps{
         @include flex(row wrap, start, space-between, 32px);
         margin: 45px 0;
         width: 100%;
     }
-    h2{
-        color: $txt-main;
+    &__title{
+        text-align: center;
     }
 }
 .step{
@@ -200,6 +283,12 @@ p{
     p{
         margin-top: 16px;
         color: $txt-main;
+    }
+}
+@media (max-width: 1030px){
+    .step{
+        @include flex(row nowrap, start, center, 20px);
+        max-width: 100%;
     }
 }
 //RECIPES
@@ -229,6 +318,14 @@ p{
     &__description{
         margin: 16px 0 32px;
     }
+    &__img{
+        max-width: 100%;
+    }
+}
+@media (max-width: 1030px){
+    .recip{
+        max-width: 90%;
+    }
 }
 //STORIES
 .stori{
@@ -246,9 +343,18 @@ p{
     &__subtitle, &__description{
         color: $head-txt;
     }
-    img{
+    &__img{
         border: $accent solid 4px;
         border-radius: 15px;
+    }
+}
+@media (max-width: 1030px){
+    .stori{
+        @include flex(row wrap, center, space-between, 32px);
+        padding: 60px 3%;
+        &__img{
+            max-width: 94%;        
+        }
     }
 }
 //REVIEWS
@@ -276,6 +382,9 @@ p{
         justify-content: space-between;
         width: 100%;
     }  
+    &--adaptive{
+        display: none;
+    }
 }
 .review{
     @include flex(row nowrap, start, initial, 40px);
@@ -290,6 +399,24 @@ p{
             font-size: 16px;
             padding-left: 4px;
         }
+    }
+}
+@media (max-width: 1030px){
+    .reviews{
+        display: none;
+        &__box{
+            grid-template-columns: 1fr;
+        }  
+        &__slider{
+            @include flex(row nowrap, center, space-between, 20px);
+            margin: 16px 0;
+        } 
+        &--adaptive{
+            display: block;
+        }
+    }
+    .review{
+        @include flex(row wrap, start, initial, 20px);
     }
 }
 //PROGRAM
@@ -317,7 +444,6 @@ p{
         text-align: center;
     }
 }
-
 .program-item{
     @include flex(column nowrap, center, center, initial);
     max-width: 276px;
@@ -332,7 +458,13 @@ p{
         text-align: center;
     }
 }
-
+@media (max-width: 1030px){
+    .program{
+        &__box{
+            grid-template-columns: 1fr;
+        }
+    }
+}
 //TABLE
 .table-plan-choice{
     margin: 90px 3% 100px;
@@ -359,25 +491,51 @@ p{
         color: $head-txt;
         vertical-align: middle;
     }
-    tr td:nth-child(3), tr th:nth-child(3) { 
-        border-left: 3px solid $red ; 
-        border-right: 3px solid $red ;
+    td:nth-child(3), th:nth-child(3) { 
+        border-left: 3px solid $red; 
+        border-right: 3px solid $red;
     }
     tr:first-child th:nth-child(3) { 
-        border-top: 3px solid $red ;
+        border-top: 3px solid $red;
     }
     tr:last-child td:nth-child(3) { 
-        border-bottom: 3px solid $red ;
+        border-bottom: 3px solid $red;
+    }
+    &--standard,&--advanced{
+        display: none;
+    }
+    &--advanced{
+        td:nth-child(2), th:nth-child(2) { 
+            border-left: 3px solid $red; 
+            border-right: 3px solid $red;
+        }
+        tr:first-child th:nth-child(2) { 
+            border-top: 3px solid $red;
+        }
+        tr:last-child td:nth-child(2) { 
+            border-bottom: 3px solid $red;
+        } 
     }
 }
-
-
-
-
-
-
-
-
+.table-wrapper{
+    @include flex(column nowrap, center, center, 32px);
+    margin: 90px 3% 100px;
+}
+@media (max-width: 1030px){
+    .table-plan-choice{
+        display: none;
+        margin: 0;
+        td, th{
+            padding: 16px;
+        }
+        &--standard,&--advanced{
+            display: block;
+        }
+        .btn-outline{
+            padding: 8px 16px;
+        }
+    }
+}
 //QUESTIONS
 .questions{
     padding: 0 3% 100px;
@@ -406,7 +564,12 @@ p{
         }
     }
 }
-
+@media (max-width: 1030px){
+    .questions{
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
 //FORM
 .bg-3{
     background-image: url(../img/photos/bg-3.png);
@@ -426,7 +589,7 @@ p{
     input{
         background-color: $light-grey;
         border: $grey 1px solid;
-        width: 95%;
+        width: 90%;
         height: 40px;
         border-radius: 100px;
         padding-left: 16px;
@@ -458,6 +621,18 @@ p{
         color: $light-text;
     }
 }
+@media (max-width: 1030px){
+    .form-box{
+        padding: 30px;
+        &__btn{
+            padding: 8px 32px;
+        }
+        &__actions{
+            @include flex(row wrap, center, start, 10px);
+            margin-top: 16px;
+        }
+    }
+}
 //COACHES
 .coaches{
     padding: 90px 10%;
@@ -477,7 +652,6 @@ p{
         color: $light-text;
         text-align: center;
     }
-
 }
 .coach{
     @include flex(row nowrap, initial, initial, 20px);
@@ -497,6 +671,21 @@ p{
     }
     &__description{
         color: $light-text;
+    }
+}
+@media (max-width: 1030px){
+    .coach{
+        @include flex(row wrap, initial, initial, 20px);
+        &__name{
+            @include flex(row wrap, start, space-between, 20px);
+            width: 100%;
+        }
+    }
+    .coaches{
+        &__box{
+            grid-template-columns: 1fr;
+            margin: 60px 0;
+        }
     }
 }
 //JOURNEY
@@ -540,6 +729,16 @@ p{
     }
     &__title{
         color: $txt-main;
+    }
+}
+@media (max-width: 1030px){
+    .footer{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-auto-rows: 1fr;
+        &__info{
+            max-width: 100%;
+        }
     }
 }
 
